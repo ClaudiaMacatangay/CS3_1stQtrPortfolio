@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Centralized Club Application Form</title>
+
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f4f6f8;
+}
+
+form {
+width: 600px;
+margin: 30px auto;
+background: #ffffff;
+padding: 20px;
+border-radius: 8px;
+}
+
+fieldset {
+margin-bottom: 20px;
+padding: 15px;
+border: 1px solid #ccc;
+}
+
+legend {
+font-weight: bold;
+}
+
+label {
+display: block;
+margin-bottom: 10px;
+}
+
+input, select, textarea {
+width: 100%;
+padding: 6px;
+margin-top: 4px;
+}
+
+
+input:focus, select:focus, textarea:focus {
+background-color: #e0f3ff;
+border: 2px solid #0077cc;
+outline: none;
+}
+
+.error {
+border: 2px solid red;
+background-color: #ffe6e6;
+}
+
+.buttons {
+text-align: center;
+}
+
+.buttons input {
+width: 120px;
+margin: 5px;
+}
+</style>
+
+<script>
+function confirmSubmit() {
+return confirm("Are you sure you want to submit this application?");
+}
+
+function confirmReset() {
+return confirm("Are you sure you want to reset the form?");
+}
+
+function checkEmpty(field) {
+if (field.value.trim() === "") {
+field.classList.add("error");
+} else {
+field.classList.remove("error");
+}
+}
+</script>
+</head>
+<body>
+
+<form method="post" action="submit" onsubmit="return confirmSubmit();" onreset="return confirmReset();">
+
+
+<fieldset>
+<legend>Personal Information</legend>
+
+<label>
+Student ID:
+<input type="number" name="studentid" required onblur="checkEmpty(this)">
+</label>
+
+<label>
+Full Name:
+<input type="text" name="fullname" required onblur="checkEmpty(this)">
+</label>
+
+<label>
+Birthday:
+<input type="date" name="birthday" required>
+</label>
+
+<label>
+Email Address:
+<input type="email" name="email" required onblur="checkEmpty(this)">
+</label>
+</fieldset>
+
+
+<fieldset>
+<legend>Academic & Club Preferences</legend>
+
+<label>
+Mobile Phone:
+<input type="text" name="mobile" required onblur="checkEmpty(this)">
+</label>
+
+<label>
+Grade Level:
+<select name="grade" required>
+<option value="">-- Select Grade Level --</option>
+<option value="G7">Grade 7</option>
+<option value="G8">Grade 8</option>
+<option value="G9">Grade 9</option>
+<option value="G10">Grade 10</option>
+<option value="G11">Grade 11</option>
+<option value="G12">Grade 12</option>
+</select>
+</label>
+
+<label>
+Intern / Extern:
+<input type="radio" name="status" value="INT" required> Intern
+<input type="radio" name="status" value="EXT"> Extern
+</label>
+
+<label>
+Preferred Organization / Club:
+<select name="club" required>
+<option value="">-- Select Club --</option>
+<option value="TECH">Pisay XYZ</option>
+<option value="ARTS">Likha</option>
+<option value="SPORTS">Alianti</option>
+<option value="MUSIC">Himig Agham</option>
+<option value="VOL">CARE</option>
+</select>
+</label>
+</fieldset>
+
+
+<fieldset>
+<legend>Additional Information</legend>
+
+<label>
+Why do you want to join?
+<textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea>
+</label>
+</fieldset>
+
+<div class="buttons">
+<input type="submit" value="Submit">
+<input type="reset" value="Clear">
+</div>
+
+</form>
+
+</body>
+</html>
